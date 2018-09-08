@@ -1,12 +1,12 @@
 #! /usr/bin/make -f
 
-URL := $(shell gcloud functions describe helloGET --format json | jq .httpsTrigger.url)
+URL := $(shell gcloud functions describe simplefunctionA --format json | jq .httpsTrigger.url)
 
 deploy:
-	cd simplefunction-a; gcloud functions deploy helloGET --trigger-http;
+	cd simplefunctionA; gcloud functions deploy simplefunctionA --trigger-http;
 
 trigger:
 	curl $(URL)
 
 delete: 
-	gcloud functions delete helloGET
+	gcloud functions delete simplefunctionA
